@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результат</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .result-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #004080;
+        }
+        p {
+            font-size: 18px;
+            color: #003366;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        a:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Вероятность ДТП: {{ prob }}%</h2>
+        <p>{{ advice }}</p>
+        <a href="/">Назад</a>
+    </div>
+</body>
+</html>

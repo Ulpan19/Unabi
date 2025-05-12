@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выбор моделей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #004080;
+        }
+        form {
+            text-align: left;
+            padding-left: 20px;
+        }
+        .model-checkbox {
+            margin-bottom: 10px;
+            color: #003366;
+            font-size: 16px;
+        }
+        .model-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2>Выберите модели для предсказания</h2>
+        <form action="/form" method="post">
+            {% for model in models %}
+                <div class="model-checkbox">
+                    <input type="checkbox" name="models" value="{{ model }}"> {{ model }}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Перейти к форме ввода данных">
+        </form>
+    </div>
+</body>
+</html>

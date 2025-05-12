@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка изображения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #004080;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #004080;
+        }
+        .image-container {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #004080;
+            border-radius: 8px;
+        }
+        h3 {
+            text-align: center;
+            color: #004080;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2>Загрузите изображение для определения объектов</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required><br>
+            <input type="submit" value="Загрузить">
+        </form>
+        
+        {% if result_image %}
+            <h3>Результат детекции:</h3>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='detected_objects.jpg') }}" alt="Detected Objects">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

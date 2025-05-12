@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Частые шаблоны ДТП</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #004080;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #0066cc;
+            color: white;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <div class="container">
+        <h2>Частые шаблоны ДТП</h2>
+
+        {% if patterns %}
+            <table>
+                <tr>
+                    <th>Комбинация</th>
+                    <th>Частота</th>
+                </tr>
+                {% for pattern in patterns %}
+                <tr>
+                    <td>{{ pattern['items'] }}</td>
+                    <td>{{ pattern['support'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Частых шаблонов не найдено.</p>
+        {% endif %}
+
+        <a href="/">Назад</a>
+    </div>
+</body>
+</html>

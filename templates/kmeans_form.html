@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заполните форму для кластеризации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #004080;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #003366;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Заполните форму для кластеризации</h2>
+        <form action="/kmeans" method="POST">
+            <label>Возраст:</label>
+            <input type="number" name="age" required>
+
+            <label>Опыт (лет):</label>
+            <input type="number" name="experience" required>
+
+            <label>Тип автомобиля:</label>
+            <select name="car_type" required>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="truck">Truck</option>
+                <option value="sports">Sports</option>
+                <option value="minivan">Minivan</option>
+            </select>
+
+            <label>Погода:</label>
+            <select name="weather" required>
+                <option value="sunny">Sunny</option>
+                <option value="rainy">Rainy</option>
+                <option value="foggy">Foggy</option>
+                <option value="snowy">Snowy</option>
+            </select>
+
+            <label>Время суток:</label>
+            <select name="time_of_day" required>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="night">Night</option>
+            </select>
+
+            <label>Скорость (speeding):</label>
+            <input type="number" name="speeding" required>
+
+            <label>Использование ремня безопасности (seatbelt):</label>
+            <select name="seatbelt" required>
+                <option value="0">Не использую</option>
+                <option value="1">Использую</option>
+            </select>
+
+            <label>Употребление алкоголя (alcohol):</label>
+            <select name="alcohol" required>
+                <option value="0">Не употребляю</option>
+                <option value="1">Употребляю</option>
+            </select>
+
+            <input type="submit" value="Кластеризовать">
+        </form>
+    </div>
+</body>
+</html>

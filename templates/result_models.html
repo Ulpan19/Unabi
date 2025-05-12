@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты предсказания моделей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #004080;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #e6f0ff;
+        }
+        .chart-title {
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            color: #004080;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        img {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2>Результаты предсказания моделей</h2>
+
+        <table>
+            <tr>
+                <th>Модель</th>
+                <th>Результат</th>
+            </tr>
+            {% for model, result in results.items() %}
+                {% if "_chart" not in model %}
+                <tr>
+                    <td>{{ model }}</td>
+                    <td>{{ result }} {% if "Оценка риска" not in result and "Кластер" not in result %}%{% endif %}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+
+        {% for model, result in results.items() %}
+            {% if "_chart" in model %}
+                <div class="chart-title">{{ model.replace("_chart", "") }}</div>
+                <div class="chart-container">
+                    <img src="{{ url_for('static', filename=result.split('/')[-1]) }}" alt="Диаграмма">
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <a href="/" class="back-button">Вернуться к выбору моделей</a>
+    </div>
+</body>
+</html>
